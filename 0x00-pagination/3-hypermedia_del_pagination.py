@@ -51,13 +51,12 @@ class Server:
         indexed_data = self.indexed_dataset()
         assert index < len(indexed_data)
 
-        data = [
-            indexed_data[i]
-            for i in range(index, index + page_size)
-            if i in indexed_data
-        ]
-
-        next_index = index + page_size
+        data = []
+        next_index = index
+        while len(data) < page_size and next_index < len(indexed_data):
+            if next_index in indexed_data:
+                data.append(indexed_data[next_index])
+            next_index += 1
 
         return {
             "index": index,
