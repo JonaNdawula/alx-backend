@@ -57,14 +57,13 @@ class Server:
             if i in indexed_data
         ]
 
-        next_index = max(
-            i for i in indexed_data
-            if i >= index and i < index + page_size
-        ) + 1
+        next_index = index + page_size
+        while next_index not in indexed_data and next_index < len(indexed_data):
+            next_index -= 1
 
         return {
             "index": index,
-            "next_index": next_index,
+            "data": data,
             "page_size": page_size,
-            "data": data
+            "next_index": next_index,
         }
