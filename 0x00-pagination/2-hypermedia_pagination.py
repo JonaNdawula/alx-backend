@@ -5,6 +5,7 @@ import math
 import csv
 from typing import List
 
+
 class Server:
     """Server class to paginate popular baby names
     """
@@ -30,7 +31,6 @@ class Server:
         assert isinstance(page_size, int) and page_size > 0
         st_index, end_index = index_range(page, page_size)
         return self.dataset()[st_index:end_index]
-
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """
