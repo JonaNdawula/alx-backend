@@ -51,8 +51,16 @@ class Server:
         indexed_data = self.indexed_dataset()
         assert index < len(indexed_data)
 
-        data = [indexed_data[i] for i in range(index, index + page_size) if i in indexed_data]
-        next_index = max(i for i in indexed_data if i >= index and i < index + page_size) + 1
+        data = [
+            indexed_data[i]
+            for i in range(index, index + page_size)
+            if i in indexed_data
+        ]
+
+        next_index = max(
+            i for i in indexed_data
+            if i >= index and i < index + page_size
+        ) + 1
 
         return {
             "index": index,
