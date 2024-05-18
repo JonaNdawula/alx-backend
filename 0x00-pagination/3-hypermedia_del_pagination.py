@@ -58,8 +58,6 @@ class Server:
         ]
 
         next_index = index + page_size
-        while next_index not in indexed_data and next_index < len(indexed_data):
-            next_index -= 1
 
         return {
             "index": index,
