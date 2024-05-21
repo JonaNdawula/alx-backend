@@ -40,4 +40,4 @@ class FIFOCache(BaseCaching):
         """
         Returns the value in self.cache_data
         """
-        return self.cahce_data.get(key, None)
+        return self.cache_data.get(key, None)
