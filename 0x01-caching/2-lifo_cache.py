@@ -26,14 +26,15 @@ class LIFOCache(BaseCaching):
         """
         Put items into cache
         """
-        if key in self.cache_data:
-            self.keys.remove(key)
-        elif len(self.keys) >= self.MAX_ITEMS:
-            discarded = self.keys.pop()
-            del self.cache_data[discarded]
-            print(f"DISCARD: {discarded}")
-        self.cache_data[key] = item
-        self.keys.append(key)
+        if key is not None and item is not None:
+            if key in self.cache_data:
+                self.keys.remove(key)
+            elif len(self.keys) >= self.MAX_ITEMS:
+                discarded = self.keys.pop()
+                del self.cache_data[discarded]
+                print(f"DISCARD: {discarded}")
+            self.cache_data[key] = item
+            self.keys.append(key)
 
     def get(self, key):
         """
