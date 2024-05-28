@@ -26,6 +26,13 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+@webapp.before_request
+def before_request():
+    """
+    Function to be executed first
+    """
+    g.user = user()
+
 
 def get_user() -> dict:
     """
@@ -33,22 +40,8 @@ def get_user() -> dict:
     """
     user_id = request.args.get('login_as')
     if user_id:
-        try:
-            user_id = int(user_id)
-        except ValueError:
-            return None
-        if user_id in users:
-            return users[user_id]
+        return users.get(int(user_id))
     return None
-
-
-@webapp.before_request
-def before_request():
-    """
-    Function to be executed first
-    """
-    user = get_user()
-    g.user = user
 
 
 @localization.localeselector
