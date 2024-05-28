@@ -3,7 +3,7 @@
 This modul runs a simple flask app that renders
 a template when the root route is accessed
 """
-from flask import Flast, render_template, request
+from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
@@ -12,6 +12,7 @@ class Config:
     Configuration class for
     Flask-Babel
     """
+
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -39,5 +40,5 @@ def index() -> str:
     return render_template("2-index.html")
 
 
-if __name__ = "__main__":
-    app.run('0.0.0.0', port="5000")
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port="5000")
