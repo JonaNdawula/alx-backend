@@ -8,6 +8,8 @@ from flask_babel import Babel
 
 class Config(object):
     """
+
+    Configuration for Flask-Babel
     """
 
     LANGUAGES = ["en", "fr"]
@@ -16,8 +18,8 @@ class Config(object):
 
 
 webapp = Flask(__name__)
-webapp.config.from_object(config)
-localiztion = Babel(webapp)
+webapp.config.from_object(Config)
+localization = Babel(webapp)
 
 
 @localization.localeselector
@@ -28,7 +30,7 @@ def get_locale() -> str:
     requested_locale = request.args.get('locale')
     if requested_locale in webapp.config["LANGUAGES"]:
         return requested_locale
-    return request.accpet_languages.best_match(webapp.config['LANGUAGES'])
+    return request.accept_languages.best_match(webapp.config['LANGUAGES'])
 
 
 @app.route('/')
@@ -39,5 +41,5 @@ def index() -> str:
     return render_template('4-index.html')
 
 
-if __name__ = "__main__":
-    app.run(host="0.0.0.0", port='5000')
+if __name__  == "__main__":
+    webapp.run(host="0.0.0.0", port='5000')
