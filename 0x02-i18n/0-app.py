@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def index():
+def index() -> str:
     """
     A function called when '/'
     is accessed, it will render '0-index.html'
