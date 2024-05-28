@@ -2,7 +2,7 @@
 """
 This module will Force locale with URL parameter
 """
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template
 from flask_babel import Babel
 
 
