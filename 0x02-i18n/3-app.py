@@ -25,7 +25,7 @@ babel = Babel(app)
 @babel.localeselector
 def get_locale() -> str:
     """
-    This function is used to return the lcal language
+    This function is used to return the local language
     """
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
