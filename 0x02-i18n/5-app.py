@@ -16,7 +16,7 @@ class Config(object):
 
 
 webapp = Flask(__name__)
-webapp.config,from_object(Config)
+webapp.config.from_object(Config)
 localization = Babel(webapp)
 
 users = {
@@ -26,7 +26,8 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
-def get_usr() -> dict:
+
+def get_user() -> dict:
     """
     Get a user from 'users' table by ID
     """
@@ -44,22 +45,24 @@ def before_request():
     user = get_user()
     g.user = user
 
+
 @localization.localeselector
 def get_locale() -> str:
     """
     Selects the best matching language for the user
     """
-    if g,get('user'):
+    if g.get('user'):
         return g.user['locale']
     return request.accept_languages.best_match(webapp.config['LANGUAGES'])
+
 
 @webapp.route('/')
 def index() -> str:
     """
     Render the index page
     """
-    return render_template('5-index.html')
+    return request_template('5-index.html')
 
 
 if __name__ == "__main__":
-    webapp.run(host="0.0.0.0", port=""5000")
+    webapp.run(host="0.0.0.0", port=5000)
