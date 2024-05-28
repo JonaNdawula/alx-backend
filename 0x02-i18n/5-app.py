@@ -32,8 +32,13 @@ def get_user() -> dict:
     Get a user from 'users' table by ID
     """
     user_id = request.args.get('login_as')
-    if user_id and int(user_id) in users:
-        return users[int(user_id)]
+    if user_id:
+        try:
+            user_id = int(user_id)
+        except ValueError:
+            return None
+        if user_id in users:
+            return users[user_id]
     return None
 
 
