@@ -3,7 +3,6 @@
 This modul runs a simple flask app that renders
 a template when the root route is accessed
 """
-
 from flask import Flast, render_template, request
 from flask_babel import Babel
 
