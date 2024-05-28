@@ -32,7 +32,7 @@ def before_request():
     """
     Function to be executed first
     """
-    g.user = user()
+    g.user = get_user()
 
 
 def get_user() -> dict:
