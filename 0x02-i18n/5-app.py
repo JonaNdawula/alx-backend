@@ -2,7 +2,7 @@
 """
 This module emulates a user login by usin a mock database
 """
-from flask import Flask, request_template, request, g
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 
@@ -61,7 +61,7 @@ def index() -> str:
     """
     Render the index page
     """
-    return request_template('5-index.html')
+    return render_template('5-index.html')
 
 
 if __name__ == "__main__":
