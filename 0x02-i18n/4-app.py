@@ -33,7 +33,7 @@ def get_locale() -> str:
     return request.accept_languages.best_match(webapp.config['LANGUAGES'])
 
 
-@app.route('/')
+@webapp.route('/')
 def index() -> str:
     """
     Route Documentation
