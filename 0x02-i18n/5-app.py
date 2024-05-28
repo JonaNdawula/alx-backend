@@ -26,6 +26,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 @webapp.before_request
 def before_request():
     """
