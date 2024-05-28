@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel
 import pytz
 
+
 class Config(object):
     """
     Configuration for Flask-Babel
@@ -85,7 +86,11 @@ def index() -> str:
     """
     Render the index page
     """
-    return render_template('7-index.html')
+    from datetime import datetime
+    from flask_babel import format_datetime
+
+    current_time = format_datetime(datetime.utcnow())
+    return render_template("index.html", current_time=current_time)
 
 
 if __name__ == "__main__":
