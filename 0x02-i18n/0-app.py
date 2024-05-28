@@ -11,9 +11,9 @@ app = Flask(__name__)
 def index():
     """
     A function called when '/'
-    is accessed, it will render 'index.html'
+    is accessed, it will render '0-index.html'
     """
-    return render_template('index.html')
+    return render_template('0-index.html')
 
 
 if __name__ == "__main__":
