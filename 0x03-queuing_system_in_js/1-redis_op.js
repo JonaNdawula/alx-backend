@@ -15,7 +15,7 @@ function setNewSchool(schoolName, value) {
 }
 
 function displaySchoolValue(schoolName) {
-  clinet.get(schoolName, (err, reply) => {
+  client.get(schoolName, (err, reply) => {
     if (err) {
       console.error(err);
     } else {
